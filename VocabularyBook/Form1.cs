@@ -104,7 +104,7 @@ namespace VocabularyBook
             try
             {
                 // Load Excel workbook from path
-                var workbook = new XLWorkbook(@"D:\Personal\StudyApp\List.xlsx");
+                var workbook = new XLWorkbook(@"D:\Personal\VocabularyBook\List.xlsx"); // TODO change path
                 // Select all used rows on 1 sheet and skip first row
                 var rows = workbook.Worksheet(1).RangeUsed().RowsUsed().Skip(1);
 
