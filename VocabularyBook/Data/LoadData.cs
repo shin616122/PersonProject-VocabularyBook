@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace VocabularyBook
 {
-    public class LoadData
+    public class LoadData : BaseLogic
     {
         /// <summary>
         /// エクセルファイルからデータを読み込み
@@ -18,7 +18,7 @@ namespace VocabularyBook
             try
             {
                 // Load Excel workbook from path
-                var workbook = new XLWorkbook(@"D:\Personal\VocabularyBook\List.xlsx"); // TODO change path
+                var workbook = new XLWorkbook(EXCEL_FILEPATH);
                 // Select all used rows on 1 sheet and skip first row
                 var rows = workbook.Worksheet(1).RangeUsed().RowsUsed().Skip(1);
 
