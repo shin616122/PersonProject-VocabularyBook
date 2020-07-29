@@ -13,7 +13,7 @@ namespace VocabularyBook
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public static List<RowData> LoadDataFromExcel(object sender, EventArgs e)
+        public static List<RowData> LoadDataFromExcel()
         {
             try
             {

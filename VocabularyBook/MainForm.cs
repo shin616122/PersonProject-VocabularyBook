@@ -28,7 +28,7 @@ namespace VocabularyBook
             // TODO 指定ディレクトリ（EXEと同じPath）にある.xlsxを取得
 
             // 問題一覧の取得
-            RowDataList = LoadData.LoadDataFromExcel(sender, e);
+            RowDataList = LoadData.LoadDataFromExcel();
 
             // 一番目の問題をtbxQuestionにロードする
             tbxQuestion.Text = RowDataList.First().Question;
