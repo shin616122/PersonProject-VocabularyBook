@@ -36,6 +36,7 @@
             this.btnNext = new System.Windows.Forms.Button();
             this.chkShouldReview = new System.Windows.Forms.CheckBox();
             this.btnBack = new System.Windows.Forms.Button();
+            this.lbFilepath = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -135,11 +136,23 @@
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
+            // lbFilepath
+            // 
+            this.lbFilepath.AutoSize = true;
+            this.lbFilepath.Font = new System.Drawing.Font("MS UI Gothic", 10F);
+            this.lbFilepath.Location = new System.Drawing.Point(15, 12);
+            this.lbFilepath.Name = "lbFilepath";
+            this.lbFilepath.Size = new System.Drawing.Size(50, 14);
+            this.lbFilepath.TabIndex = 8;
+            this.lbFilepath.Text = "filepath";
+            this.lbFilepath.Click += new System.EventHandler(this.lbFilepath_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(638, 308);
+            this.Controls.Add(this.lbFilepath);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.chkShouldReview);
             this.Controls.Add(this.btnNext);
@@ -167,6 +180,7 @@
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.CheckBox chkShouldReview;
         private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.Label lbFilepath;
     }
 }
 

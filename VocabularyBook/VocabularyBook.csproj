@@ -54,7 +54,6 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\BaseLogic.cs" />
     <Compile Include="Data\LoadData.cs" />
     <Compile Include="Data\UpdateData.cs" />
     <Compile Include="MainForm.cs">

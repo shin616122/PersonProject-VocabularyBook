@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -9,6 +10,7 @@ namespace VocabularyBook
     {
         private List<RowData> RowDataList { get; set; }
         private int CurrentRowNumber { get; set; }
+        public string FilePath { get; set; }
 
         public MainForm()
         {
@@ -24,10 +26,36 @@ namespace VocabularyBook
         {
             // TODO 全問 or 印 の選択
 
-            // TODO 指定ディレクトリ（EXEと同じPath）にある.xlsxを取得
+            // 指定ディレクトリ（EXEと同じPath）にある.xlsxを取得
+            string[] filePaths = Directory.GetFiles($"{Path.GetDirectoryName(Application.ExecutablePath)}", "*.xlsx");
 
-            // 問題一覧の取得
-            RowDataList = LoadData.LoadDataFromExcel();
+            if(filePaths.Length == 1)
+            {
+                // xlsxパスを変数に保存する
+                FilePath = filePaths[0];
+
+                // パスラベルを更新
+                lbFilepath.Text = $@"ファイルパス: {FilePath}";
+
+                // 問題一覧の取得
+                RowDataList = LoadData.LoadDataFromExcel(FilePath);
+            }
+            else　if(filePaths.Length > 1)
+            {
+                //　複数エクセを見つかった場合
+                MessageBox.Show("姉御に連絡して！ 複数エクセルが見つかりました。",
+                                "残念でした",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Exclamation);
+            }
+            else if(filePaths.Length < 0)
+            {
+                //　エクセを見つからなかった場合
+                MessageBox.Show("姉御に連絡して！ エクセルがありません。",
+                                "残念でした",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Exclamation);
+            }
 
             // 問題一覧のシャッフル
             RowDataList = ShuffleList(RowDataList);
@@ -87,7 +115,18 @@ namespace VocabularyBook
         {
 
         }
-#endregion
+
+
+        /// <summary>
+        /// ファイルパスのラベル
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void lbFilepath_Click(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
 
         /// <summary>
         /// 次へボタン
@@ -197,7 +236,7 @@ namespace VocabularyBook
                 currentRow.ShouldReview = Convert.ToInt32(chkShouldReview.Checked);
 
                 // エクセルを更新する
-                UpdateData.UpdateShouldReview(CurrentRowNumber, chkShouldReview.Checked);
+                UpdateData.UpdateShouldReview(CurrentRowNumber, chkShouldReview.Checked, FilePath);
             }
             catch (Exception ex)
             {

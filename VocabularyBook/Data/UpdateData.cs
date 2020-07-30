@@ -2,17 +2,17 @@
 
 namespace VocabularyBook
 {
-    public class UpdateData : BaseLogic
+    public class UpdateData
     {
         /// <summary>
         /// エクセルの印を更新する
         /// </summary>
         /// <param name="rowNumber">現在のrowNumber</param>
         /// <param name="checkBoxValue">チェックボックス数値</param>
-        public static void UpdateShouldReview(int rowNumber, bool checkBoxValue)
+        public static void UpdateShouldReview(int rowNumber, bool checkBoxValue, string filePath)
         {
             // エクセルを読み込む
-            var workbook = new XLWorkbook(EXCEL_FILEPATH);
+            var workbook = new XLWorkbook(filePath);
             
             // 最初のワークシートを選択
             var workSheet = workbook.Worksheet(1);

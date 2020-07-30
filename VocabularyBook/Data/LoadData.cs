@@ -6,19 +6,19 @@ using System.Windows.Forms;
 
 namespace VocabularyBook
 {
-    public class LoadData : BaseLogic
+    public class LoadData
     {
         /// <summary>
         /// エクセルファイルからデータを読み込み
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public static List<RowData> LoadDataFromExcel()
+        public static List<RowData> LoadDataFromExcel(string filePath)
         {
             try
             {
                 // Load Excel workbook from path
-                var workbook = new XLWorkbook(EXCEL_FILEPATH);
+                var workbook = new XLWorkbook(filePath);
                 // Select all used rows on 1 sheet and skip first row
                 var rows = workbook.Worksheet(1).RangeUsed().RowsUsed().Skip(1);
 
