@@ -39,6 +39,7 @@
             this.lbFilepath = new System.Windows.Forms.Label();
             this.pnlQA = new System.Windows.Forms.Panel();
             this.pnlStart = new System.Windows.Forms.Panel();
+            this.chkShuffle = new System.Windows.Forms.CheckBox();
             this.chkReviewOnly = new System.Windows.Forms.CheckBox();
             this.btnStart = new System.Windows.Forms.Button();
             this.pnlQA.SuspendLayout();
@@ -173,6 +174,7 @@
             // 
             // pnlStart
             // 
+            this.pnlStart.Controls.Add(this.chkShuffle);
             this.pnlStart.Controls.Add(this.chkReviewOnly);
             this.pnlStart.Controls.Add(this.btnStart);
             this.pnlStart.Location = new System.Drawing.Point(0, 0);
@@ -180,11 +182,24 @@
             this.pnlStart.Size = new System.Drawing.Size(638, 308);
             this.pnlStart.TabIndex = 9;
             // 
+            // chkShuffle
+            // 
+            this.chkShuffle.AutoSize = true;
+            this.chkShuffle.Font = new System.Drawing.Font("MS UI Gothic", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.chkShuffle.Location = new System.Drawing.Point(494, 247);
+            this.chkShuffle.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
+            this.chkShuffle.Name = "chkShuffle";
+            this.chkShuffle.Size = new System.Drawing.Size(86, 23);
+            this.chkShuffle.TabIndex = 2;
+            this.chkShuffle.Text = "シャフル";
+            this.chkShuffle.UseVisualStyleBackColor = true;
+            this.chkShuffle.CheckedChanged += new System.EventHandler(this.chkShuffle_CheckedChanged);
+            // 
             // chkReviewOnly
             // 
             this.chkReviewOnly.AutoSize = true;
             this.chkReviewOnly.Font = new System.Drawing.Font("MS UI Gothic", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.chkReviewOnly.Location = new System.Drawing.Point(470, 274);
+            this.chkReviewOnly.Location = new System.Drawing.Point(494, 274);
             this.chkReviewOnly.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.chkReviewOnly.Name = "chkReviewOnly";
             this.chkReviewOnly.Size = new System.Drawing.Size(134, 23);
@@ -196,10 +211,10 @@
             // btnStart
             // 
             this.btnStart.Font = new System.Drawing.Font("MS UI Gothic", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.btnStart.Location = new System.Drawing.Point(260, 267);
+            this.btnStart.Location = new System.Drawing.Point(216, 218);
             this.btnStart.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(101, 34);
+            this.btnStart.Size = new System.Drawing.Size(203, 77);
             this.btnStart.TabIndex = 0;
             this.btnStart.Text = "開始";
             this.btnStart.UseVisualStyleBackColor = true;
@@ -238,6 +253,7 @@
         private System.Windows.Forms.Panel pnlStart;
         private System.Windows.Forms.CheckBox chkReviewOnly;
         private System.Windows.Forms.Button btnStart;
+        private System.Windows.Forms.CheckBox chkShuffle;
     }
 }
 

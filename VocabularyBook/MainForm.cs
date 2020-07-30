@@ -11,13 +11,11 @@ namespace VocabularyBook
         private List<RowData> RowDataList { get; set; }
         private int CurrentRowNumber { get; set; }
         public string FilePath { get; set; }
+        public bool IsShuffleChecked { get; set; }
 
         public MainForm()
         {
             InitializeComponent();
-
-            // 問題パネルを非表示
-            pnlQA.Hide();
         }
 
         /// <summary>
@@ -32,7 +30,7 @@ namespace VocabularyBook
             // 指定ディレクトリ（EXEと同じPath）にある.xlsxを取得
             string[] filePaths = Directory.GetFiles($"{Path.GetDirectoryName(Application.ExecutablePath)}", "*.xlsx");
 
-            if(filePaths.Length == 1)
+            if (filePaths.Length == 1)
             {
                 // xlsxパスを変数に保存する
                 FilePath = filePaths[0];
@@ -43,41 +41,28 @@ namespace VocabularyBook
                 // 問題一覧の取得
                 RowDataList = LoadData.LoadDataFromExcel(FilePath);
             }
-            else　if(filePaths.Length > 1)
+            else if (filePaths.Length > 1)
             {
                 //　複数エクセを見つかった場合
-                MessageBox.Show("姉御に連絡して！ 複数エクセルが見つかりました。",
-                                "残念でした",
+                MessageBox.Show("エラー: 複数エクセルが見つかりました。",
+                                "姉御に連絡して！",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Exclamation);
 
+                // 強制終了
                 Environment.Exit(1);
             }
-            else if(filePaths.Length <= 0)
+            else if (filePaths.Length <= 0)
             {
                 //　エクセを見つからなかった場合
-                MessageBox.Show("姉御に連絡して！ エクセルがありません。",
-                                "残念でした",
+                MessageBox.Show("エラー: エクセルがありません。",
+                                "姉御に連絡して！",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Exclamation);
 
+                // 強制終了
                 Environment.Exit(1);
             }
-
-            // 問題一覧のシャッフル
-            RowDataList = ShuffleList(RowDataList);
-
-            // ロードした問題のID
-            CurrentRowNumber = RowDataList.First().RowNumber;
-
-            // 一番目の問題をtbxQuestionにロードする
-            tbxQuestion.Text = RowDataList.First().Question;
-
-            // 一番目の印をchkShouldReviewにロードする
-            chkShouldReview.Checked = Convert.ToBoolean(RowDataList.First().ShouldReview);
-
-            // tbxAnswerを初期化
-            tbxAnswer.Text = String.Empty;
         }
 
         /// <summary>
@@ -94,46 +79,13 @@ namespace VocabularyBook
             }
             catch (Exception ex)
             {
-                MessageBox.Show("姉御に連絡して！ エラー: " + ex.Message,
-                                "残念でした",
+                MessageBox.Show("エラー: " + ex.Message,
+                                "姉御に連絡して！",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Exclamation);
                 throw ex;
             }
         }
-
-#region いらないやつ
-        /// <summary>
-        /// A
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void tbxQuestion_TextChanged(object sender, EventArgs e)
-        {
-            // いらないやつ後で消す
-        }
-
-        /// <summary>
-        /// B
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void tbxAnswer_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-
-        /// <summary>
-        /// ファイルパスのラベル
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void lbFilepath_Click(object sender, EventArgs e)
-        {
-
-        }
-        #endregion
 
         /// <summary>
         /// 次へボタン
@@ -174,8 +126,8 @@ namespace VocabularyBook
             }
             catch (Exception ex)
             {
-                MessageBox.Show("姉御に連絡して！ エラー: " + ex.Message,
-                                "残念でした",
+                MessageBox.Show("エラー: " + ex.Message,
+                                "姉御に連絡して！",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Exclamation);
                 throw ex;
@@ -221,8 +173,8 @@ namespace VocabularyBook
             }
             catch (Exception ex)
             {
-                MessageBox.Show("姉御に連絡して！ エラー: " + ex.Message,
-                                "残念でした",
+                MessageBox.Show("エラー: " + ex.Message,
+                                "姉御に連絡して！",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Exclamation);
                 throw ex;
@@ -247,11 +199,11 @@ namespace VocabularyBook
             }
             catch (Exception ex)
             {
-                MessageBox.Show("姉御に連絡して！ エラー: " + ex.Message,
-                               "残念でした",
+                MessageBox.Show("エラー: " + ex.Message,
+                               "姉御に連絡して！",
                                MessageBoxButtons.OK,
                                MessageBoxIcon.Exclamation);
-                throw;
+                throw ex;
             }
         }
 
@@ -263,8 +215,32 @@ namespace VocabularyBook
         /// <param name="e"></param>
         private void btnStart_Click(object sender, EventArgs e)
         {
+            // 開始パネルを非表示
             pnlStart.Visible = false;
+            // 問題パネルを表示
             pnlQA.Visible = true;
+
+            // chkShuffleがチェック入ったら、問題一覧をシャッフルする
+            if (IsShuffleChecked)
+            {
+                RowDataList = RowDataList.OrderBy(row => Guid.NewGuid()).ToList();
+            }
+            else
+            {
+                RowDataList = RowDataList.OrderBy(row => row.RowNumber).ToList();
+            }
+
+            // ロードした問題のID
+            CurrentRowNumber = RowDataList.First().RowNumber;
+
+            // 一番目の問題をtbxQuestionにロードする
+            tbxQuestion.Text = RowDataList.First().Question;
+
+            // 一番目の印をchkShouldReviewにロードする
+            chkShouldReview.Checked = Convert.ToBoolean(RowDataList.First().ShouldReview);
+
+            // tbxAnswerを初期化
+            tbxAnswer.Text = String.Empty;
         }
 
         /// <summary>
@@ -278,14 +254,46 @@ namespace VocabularyBook
         }
 
         /// <summary>
-        /// リストをシャフルする
+        /// 問題をシャルルかどうか
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="list">リストデータ</param>
-        /// <returns>シャルルしたリストデータ</returns>
-        private List<T> ShuffleList<T>(List<T> list)
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void chkShuffle_CheckedChanged(object sender, EventArgs e)
         {
-            return list.OrderBy(a => Guid.NewGuid()).ToList();
+            IsShuffleChecked = chkShuffle.Checked;
         }
+
+        #region いらないやつ
+        /// <summary>
+        /// A
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tbxQuestion_TextChanged(object sender, EventArgs e)
+        {
+            // いらないやつ後で消す
+        }
+
+        /// <summary>
+        /// B
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tbxAnswer_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
+        /// <summary>
+        /// ファイルパスのラベル
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void lbFilepath_Click(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
     }
 }
