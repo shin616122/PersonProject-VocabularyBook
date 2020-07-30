@@ -26,8 +26,8 @@ namespace VocabularyBook
                 if(!rows.Any())
                 {
                     //　Nullチェック
-                    MessageBox.Show("姉御に連絡して！ エクセルに問題がありません。",
-                                    "残念でした",
+                    MessageBox.Show("エラー: エクセルファイルにデータがありません。",
+                                    "姉御に連絡して！ ",
                                     MessageBoxButtons.OK,
                                     MessageBoxIcon.Exclamation);
 
@@ -68,10 +68,10 @@ namespace VocabularyBook
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message,
-                    "エラー",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Exclamation);
+                MessageBox.Show("エラー: " + ex.Message,
+                                "姉御に連絡して！",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Exclamation);
                 throw ex;
             }
         }
