@@ -17,20 +17,43 @@ namespace VocabularyBook
         {
             try
             {
-                // Load Excel workbook from path
+                // パスのエクセルを読み込む
                 var workbook = new XLWorkbook(filePath);
-                // Select all used rows on 1 sheet and skip first row
+                // 1行目はヘッダーの想定で、それをスキップして2列目かつデータを入ってるセルのみ読み込む。
                 var rows = workbook.Worksheet(1).RangeUsed().RowsUsed().Skip(1);
 
-                // Make an empty RowData List
+                // エラーチェック
+                if(!rows.Any())
+                {
+                    //　Nullチェック
+                    MessageBox.Show("姉御に連絡して！ エクセルに問題がありません。",
+                                    "残念でした",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Exclamation);
+
+                    Environment.Exit(1);
+                }
+                //else
+                //{
+
+                //// フォマードチェック
+                //MessageBox.Show("姉御に連絡して！ エクセルのフォマードが対応していません。",
+                //                "残念でした",
+                //                MessageBoxButtons.OK,
+                //                MessageBoxIcon.Exclamation);
+
+                //Environment.Exit(1);
+                //}
+
+                // RowDataのリストを作る
                 var rowDataList = new List<RowData>();
 
-                // Loop throught all rows and insert to model
+                // rowsのデータをRowDataに突っ込む
                 foreach (var row in rows)
                 {
                     var rowData = new RowData
                     {
-                        // TODO Read formula
+                        // TODO 数式も読めるように書き直す
                         RowNumber = row.RowNumber(),
                         Id = Convert.ToInt32(row.Cell("A").GetString()),
                         Question = row.Cell("B").GetString(),
@@ -38,7 +61,7 @@ namespace VocabularyBook
                         ShouldReview = Convert.ToInt32(row.Cell("D").GetString())
                     };
 
-                    // Add rowData to rowsList
+                    // 突っ込んだRowDataをリストに突っ込む
                     rowDataList.Add(rowData);
                 }
                 return rowDataList;
