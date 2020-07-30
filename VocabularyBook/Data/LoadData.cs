@@ -13,7 +13,7 @@ namespace VocabularyBook
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public static List<RowData> LoadDataFromExcel(string filePath)
+        public static List<RowData> LoadDataFromExcel(string filePath, bool isReviewOnlyChcked)
         {
             try
             {
@@ -64,6 +64,14 @@ namespace VocabularyBook
                     // 突っ込んだRowDataをリストに突っ込む
                     rowDataList.Add(rowData);
                 }
+
+                // 印の問題のみにフィルタリング
+                if(isReviewOnlyChcked)
+                {
+                    rowDataList = rowDataList.Where(row => row.ShouldReview == 1).ToList();
+                }
+
+
                 return rowDataList;
             }
             catch (Exception ex)

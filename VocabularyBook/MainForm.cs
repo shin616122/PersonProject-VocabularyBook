@@ -12,6 +12,7 @@ namespace VocabularyBook
         private int CurrentRowNumber { get; set; }
         public string FilePath { get; set; }
         public bool IsShuffleChecked { get; set; }
+        public bool IsReviewOnlyChcked { get; set; }
 
         public MainForm()
         {
@@ -25,44 +26,7 @@ namespace VocabularyBook
         /// <param name="e"></param>
         private void MainForm_Load(object sender, EventArgs e)
         {
-            // TODO 全問 or 印 の選択
-
-            // 指定ディレクトリ（EXEと同じPath）にある.xlsxを取得
-            string[] filePaths = Directory.GetFiles($"{Path.GetDirectoryName(Application.ExecutablePath)}", "*.xlsx");
-
-            if (filePaths.Length == 1)
-            {
-                // xlsxパスを変数に保存する
-                FilePath = filePaths[0];
-
-                // パスラベルを更新
-                lbFilepath.Text = $@"ファイルパス: {FilePath}";
-
-                // 問題一覧の取得
-                RowDataList = LoadData.LoadDataFromExcel(FilePath);
-            }
-            else if (filePaths.Length > 1)
-            {
-                //　複数エクセを見つかった場合
-                MessageBox.Show("エラー: 複数エクセルが見つかりました。",
-                                "姉御に連絡して！",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Exclamation);
-
-                // 強制終了
-                Environment.Exit(1);
-            }
-            else if (filePaths.Length <= 0)
-            {
-                //　エクセを見つからなかった場合
-                MessageBox.Show("エラー: エクセルがありません。",
-                                "姉御に連絡して！",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Exclamation);
-
-                // 強制終了
-                Environment.Exit(1);
-            }
+            // TODO ここに書けるコードあるはず
         }
 
         /// <summary>
@@ -217,8 +181,43 @@ namespace VocabularyBook
         {
             // 開始パネルを非表示
             pnlStart.Visible = false;
-            // 問題パネルを表示
-            pnlQA.Visible = true;
+
+            // 指定ディレクトリ（EXEと同じPath）にある.xlsxを取得
+            string[] filePaths = Directory.GetFiles($"{Path.GetDirectoryName(Application.ExecutablePath)}", "*.xlsx");
+
+            if (filePaths.Length == 1)
+            {
+                // xlsxパスを変数に保存する
+                FilePath = filePaths[0];
+
+                // パスラベルを更新
+                lbFilepath.Text = $@"ファイルパス: {FilePath}";
+
+                // 問題一覧の取得
+                RowDataList = LoadData.LoadDataFromExcel(FilePath, IsReviewOnlyChcked);
+            }
+            else if (filePaths.Length > 1)
+            {
+                //　複数エクセを見つかった場合
+                MessageBox.Show("エラー: 複数エクセルが見つかりました。",
+                                "姉御に連絡して！",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Exclamation);
+
+                // 強制終了
+                Environment.Exit(1);
+            }
+            else if (filePaths.Length <= 0)
+            {
+                //　エクセを見つからなかった場合
+                MessageBox.Show("エラー: エクセルがありません。",
+                                "姉御に連絡して！",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Exclamation);
+
+                // 強制終了
+                Environment.Exit(1);
+            }
 
             // chkShuffleがチェック入ったら、問題一覧をシャッフルする
             if (IsShuffleChecked)
@@ -250,7 +249,7 @@ namespace VocabularyBook
         /// <param name="e"></param>
         private void chkReviewOnly_CheckedChanged(object sender, EventArgs e)
         {
-
+            IsReviewOnlyChcked = chkReviewOnly.Checked;
         }
 
         /// <summary>
@@ -261,6 +260,12 @@ namespace VocabularyBook
         private void chkShuffle_CheckedChanged(object sender, EventArgs e)
         {
             IsShuffleChecked = chkShuffle.Checked;
+        }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            // 開始パネルを表示
+            pnlStart.Visible = true;
         }
 
         #region いらないやつ

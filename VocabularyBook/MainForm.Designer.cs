@@ -42,6 +42,7 @@
             this.chkShuffle = new System.Windows.Forms.CheckBox();
             this.chkReviewOnly = new System.Windows.Forms.CheckBox();
             this.btnStart = new System.Windows.Forms.Button();
+            this.btnHome = new System.Windows.Forms.Button();
             this.pnlQA.SuspendLayout();
             this.pnlStart.SuspendLayout();
             this.SuspendLayout();
@@ -166,6 +167,7 @@
             this.pnlQA.Controls.Add(this.lbFilepath);
             this.pnlQA.Controls.Add(this.label1);
             this.pnlQA.Controls.Add(this.tbxQuestion);
+            this.pnlQA.Controls.Add(this.btnHome);
             this.pnlQA.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlQA.Location = new System.Drawing.Point(0, 0);
             this.pnlQA.Name = "pnlQA";
@@ -179,7 +181,7 @@
             this.pnlStart.Controls.Add(this.btnStart);
             this.pnlStart.Location = new System.Drawing.Point(0, 0);
             this.pnlStart.Name = "pnlStart";
-            this.pnlStart.Size = new System.Drawing.Size(638, 308);
+            this.pnlStart.Size = new System.Drawing.Size(638, 311);
             this.pnlStart.TabIndex = 9;
             // 
             // chkShuffle
@@ -220,6 +222,18 @@
             this.btnStart.UseVisualStyleBackColor = true;
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
+            // btnHome
+            // 
+            this.btnHome.Font = new System.Drawing.Font("MS UI Gothic", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.btnHome.Location = new System.Drawing.Point(267, 267);
+            this.btnHome.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
+            this.btnHome.Name = "btnHome";
+            this.btnHome.Size = new System.Drawing.Size(101, 34);
+            this.btnHome.TabIndex = 10;
+            this.btnHome.Text = "ホーム";
+            this.btnHome.UseVisualStyleBackColor = true;
+            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -254,6 +268,7 @@
         private System.Windows.Forms.CheckBox chkReviewOnly;
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.CheckBox chkShuffle;
+        private System.Windows.Forms.Button btnHome;
     }
 }
 
