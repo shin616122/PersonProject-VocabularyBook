@@ -13,12 +13,12 @@ namespace VocabularyBook
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public static List<RowData> LoadDataFromExcel(object sender, EventArgs e)
+        public static List<RowData> LoadDataFromExcel(string filePath)
         {
             try
             {
                 // Load Excel workbook from path
-                var workbook = new XLWorkbook(@"D:\Personal\VocabularyBook\List.xlsx"); // TODO change path
+                var workbook = new XLWorkbook(filePath);
                 // Select all used rows on 1 sheet and skip first row
                 var rows = workbook.Worksheet(1).RangeUsed().RowsUsed().Skip(1);
 
