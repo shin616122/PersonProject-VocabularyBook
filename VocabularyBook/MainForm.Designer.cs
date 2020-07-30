@@ -37,13 +37,19 @@
             this.chkShouldReview = new System.Windows.Forms.CheckBox();
             this.btnBack = new System.Windows.Forms.Button();
             this.lbFilepath = new System.Windows.Forms.Label();
+            this.pnlQA = new System.Windows.Forms.Panel();
+            this.pnlStart = new System.Windows.Forms.Panel();
+            this.chkReviewOnly = new System.Windows.Forms.CheckBox();
+            this.btnStart = new System.Windows.Forms.Button();
+            this.pnlQA.SuspendLayout();
+            this.pnlStart.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("MS UI Gothic", 19.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label1.Location = new System.Drawing.Point(13, 39);
+            this.label1.Location = new System.Drawing.Point(12, 37);
             this.label1.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(31, 27);
@@ -54,7 +60,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("MS UI Gothic", 19.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label2.Location = new System.Drawing.Point(372, 39);
+            this.label2.Location = new System.Drawing.Point(361, 37);
             this.label2.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(33, 27);
@@ -65,7 +71,7 @@
             // 
             this.tbxQuestion.Enabled = false;
             this.tbxQuestion.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.tbxQuestion.Location = new System.Drawing.Point(18, 67);
+            this.tbxQuestion.Location = new System.Drawing.Point(17, 66);
             this.tbxQuestion.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.tbxQuestion.Multiline = true;
             this.tbxQuestion.Name = "tbxQuestion";
@@ -78,7 +84,7 @@
             // 
             this.tbxAnswer.Enabled = false;
             this.tbxAnswer.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.tbxAnswer.Location = new System.Drawing.Point(367, 67);
+            this.tbxAnswer.Location = new System.Drawing.Point(366, 66);
             this.tbxAnswer.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.tbxAnswer.Multiline = true;
             this.tbxAnswer.Name = "tbxAnswer";
@@ -90,7 +96,7 @@
             // btnAnswer
             // 
             this.btnAnswer.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.btnAnswer.Location = new System.Drawing.Point(282, 134);
+            this.btnAnswer.Location = new System.Drawing.Point(282, 129);
             this.btnAnswer.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.btnAnswer.Name = "btnAnswer";
             this.btnAnswer.Size = new System.Drawing.Size(69, 66);
@@ -102,7 +108,7 @@
             // btnNext
             // 
             this.btnNext.Font = new System.Drawing.Font("MS UI Gothic", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.btnNext.Location = new System.Drawing.Point(515, 268);
+            this.btnNext.Location = new System.Drawing.Point(516, 267);
             this.btnNext.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(101, 34);
@@ -115,7 +121,7 @@
             // 
             this.chkShouldReview.AutoSize = true;
             this.chkShouldReview.Font = new System.Drawing.Font("MS UI Gothic", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.chkShouldReview.Location = new System.Drawing.Point(523, 12);
+            this.chkShouldReview.Location = new System.Drawing.Point(511, 11);
             this.chkShouldReview.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.chkShouldReview.Name = "chkShouldReview";
             this.chkShouldReview.Size = new System.Drawing.Size(106, 23);
@@ -127,7 +133,7 @@
             // btnBack
             // 
             this.btnBack.Font = new System.Drawing.Font("MS UI Gothic", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.btnBack.Location = new System.Drawing.Point(18, 268);
+            this.btnBack.Location = new System.Drawing.Point(17, 267);
             this.btnBack.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(101, 34);
@@ -140,33 +146,80 @@
             // 
             this.lbFilepath.AutoSize = true;
             this.lbFilepath.Font = new System.Drawing.Font("MS UI Gothic", 10F);
-            this.lbFilepath.Location = new System.Drawing.Point(15, 12);
+            this.lbFilepath.Location = new System.Drawing.Point(11, 11);
             this.lbFilepath.Name = "lbFilepath";
             this.lbFilepath.Size = new System.Drawing.Size(50, 14);
             this.lbFilepath.TabIndex = 8;
             this.lbFilepath.Text = "filepath";
             this.lbFilepath.Click += new System.EventHandler(this.lbFilepath_Click);
             // 
+            // pnlQA
+            // 
+            this.pnlQA.Controls.Add(this.pnlStart);
+            this.pnlQA.Controls.Add(this.btnAnswer);
+            this.pnlQA.Controls.Add(this.chkShouldReview);
+            this.pnlQA.Controls.Add(this.label2);
+            this.pnlQA.Controls.Add(this.btnBack);
+            this.pnlQA.Controls.Add(this.btnNext);
+            this.pnlQA.Controls.Add(this.tbxAnswer);
+            this.pnlQA.Controls.Add(this.lbFilepath);
+            this.pnlQA.Controls.Add(this.label1);
+            this.pnlQA.Controls.Add(this.tbxQuestion);
+            this.pnlQA.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlQA.Location = new System.Drawing.Point(0, 0);
+            this.pnlQA.Name = "pnlQA";
+            this.pnlQA.Size = new System.Drawing.Size(638, 308);
+            this.pnlQA.TabIndex = 9;
+            // 
+            // pnlStart
+            // 
+            this.pnlStart.Controls.Add(this.chkReviewOnly);
+            this.pnlStart.Controls.Add(this.btnStart);
+            this.pnlStart.Location = new System.Drawing.Point(0, 0);
+            this.pnlStart.Name = "pnlStart";
+            this.pnlStart.Size = new System.Drawing.Size(638, 308);
+            this.pnlStart.TabIndex = 9;
+            // 
+            // chkReviewOnly
+            // 
+            this.chkReviewOnly.AutoSize = true;
+            this.chkReviewOnly.Font = new System.Drawing.Font("MS UI Gothic", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.chkReviewOnly.Location = new System.Drawing.Point(470, 274);
+            this.chkReviewOnly.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
+            this.chkReviewOnly.Name = "chkReviewOnly";
+            this.chkReviewOnly.Size = new System.Drawing.Size(134, 23);
+            this.chkReviewOnly.TabIndex = 1;
+            this.chkReviewOnly.Text = "印の問題のみ";
+            this.chkReviewOnly.UseVisualStyleBackColor = true;
+            this.chkReviewOnly.CheckedChanged += new System.EventHandler(this.chkReviewOnly_CheckedChanged);
+            // 
+            // btnStart
+            // 
+            this.btnStart.Font = new System.Drawing.Font("MS UI Gothic", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.btnStart.Location = new System.Drawing.Point(260, 267);
+            this.btnStart.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new System.Drawing.Size(101, 34);
+            this.btnStart.TabIndex = 0;
+            this.btnStart.Text = "開始";
+            this.btnStart.UseVisualStyleBackColor = true;
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(638, 308);
-            this.Controls.Add(this.lbFilepath);
-            this.Controls.Add(this.btnBack);
-            this.Controls.Add(this.chkShouldReview);
-            this.Controls.Add(this.btnNext);
-            this.Controls.Add(this.btnAnswer);
-            this.Controls.Add(this.tbxAnswer);
-            this.Controls.Add(this.tbxQuestion);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.pnlQA);
             this.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.Name = "MainForm";
             this.Text = "単語帳";
             this.Load += new System.EventHandler(this.MainForm_Load);
+            this.pnlQA.ResumeLayout(false);
+            this.pnlQA.PerformLayout();
+            this.pnlStart.ResumeLayout(false);
+            this.pnlStart.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -181,6 +234,10 @@
         private System.Windows.Forms.CheckBox chkShouldReview;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Label lbFilepath;
+        private System.Windows.Forms.Panel pnlQA;
+        private System.Windows.Forms.Panel pnlStart;
+        private System.Windows.Forms.CheckBox chkReviewOnly;
+        private System.Windows.Forms.Button btnStart;
     }
 }
 

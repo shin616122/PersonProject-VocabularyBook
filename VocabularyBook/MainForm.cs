@@ -15,6 +15,9 @@ namespace VocabularyBook
         public MainForm()
         {
             InitializeComponent();
+
+            // 問題パネルを非表示
+            pnlQA.Hide();
         }
 
         /// <summary>
@@ -47,14 +50,18 @@ namespace VocabularyBook
                                 "残念でした",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Exclamation);
+
+                Environment.Exit(1);
             }
-            else if(filePaths.Length < 0)
+            else if(filePaths.Length <= 0)
             {
                 //　エクセを見つからなかった場合
                 MessageBox.Show("姉御に連絡して！ エクセルがありません。",
                                 "残念でした",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Exclamation);
+
+                Environment.Exit(1);
             }
 
             // 問題一覧のシャッフル
@@ -246,6 +253,28 @@ namespace VocabularyBook
                                MessageBoxIcon.Exclamation);
                 throw;
             }
+        }
+
+        
+        /// <summary>
+        /// 開始ボタン
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+            pnlStart.Visible = false;
+            pnlQA.Visible = true;
+        }
+
+        /// <summary>
+        /// 印の問題のみ表示する
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void chkReviewOnly_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
 
         /// <summary>
