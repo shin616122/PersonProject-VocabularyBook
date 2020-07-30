@@ -191,7 +191,7 @@ namespace VocabularyBook
                 FilePath = filePaths[0];
 
                 // パスラベルを更新
-                lbFilepath.Text = $@"ファイルパス: {FilePath}";
+                lbFilepath.Text = $"ファイルパス: {FilePath}";
 
                 // 問題一覧の取得
                 RowDataList = LoadData.LoadDataFromExcel(FilePath, IsReviewOnlyChcked);
@@ -205,7 +205,7 @@ namespace VocabularyBook
                                 MessageBoxIcon.Exclamation);
 
                 // 強制終了
-                Environment.Exit(1);
+                Application.Exit();
             }
             else if (filePaths.Length <= 0)
             {
@@ -216,7 +216,7 @@ namespace VocabularyBook
                                 MessageBoxIcon.Exclamation);
 
                 // 強制終了
-                Environment.Exit(1);
+                Application.Exit();
             }
 
             // chkShuffleがチェック入ったら、問題一覧をシャッフルする

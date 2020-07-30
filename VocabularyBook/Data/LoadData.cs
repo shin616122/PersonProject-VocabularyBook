@@ -31,7 +31,7 @@ namespace VocabularyBook
                                     MessageBoxButtons.OK,
                                     MessageBoxIcon.Exclamation);
 
-                    Environment.Exit(1);
+                    Application.Exit();
                 }
                 //else
                 //{
@@ -48,21 +48,74 @@ namespace VocabularyBook
                 // RowDataのリストを作る
                 var rowDataList = new List<RowData>();
 
+                // エラーリスt
+                var errorList = new List<int>();
+
                 // rowsのデータをRowDataに突っ込む
                 foreach (var row in rows)
                 {
-                    var rowData = new RowData
+                    var rowData = new RowData();
+
+                    // TODO 数式も読めるように書き直す
+                    int rowNumber = row.RowNumber();
+                    string id = row.Cell("A").GetString();
+                    string question = row.Cell("B").GetString();
+                    string answer = row.Cell("C").GetString();
+                    string shouldReview = row.Cell("D").GetString();
+
+                    // 空セルチェック
+                    if (string.IsNullOrEmpty(id) || 
+                       string.IsNullOrEmpty(question) || 
+                       string.IsNullOrEmpty(answer) || 
+                       string.IsNullOrEmpty(shouldReview))
                     {
-                        // TODO 数式も読めるように書き直す
-                        RowNumber = row.RowNumber(),
-                        Id = Convert.ToInt32(row.Cell("A").GetString()),
-                        Question = row.Cell("B").GetString(),
-                        Answer = row.Cell("C").GetString(),
-                        ShouldReview = Convert.ToInt32(row.Cell("D").GetString())
-                    };
+                        errorList.Add(rowNumber);
+                    }
+
+                    rowData.RowNumber = rowNumber;
+                    if(Int32.TryParse(id, out int idInt))
+                    {
+                        rowData.Id = idInt;
+                    }
+                    else
+                    {
+                        MessageBox.Show($"通番は数字のみ　行: {rowNumber}",
+                                        "姉御に連絡して！",
+                                        MessageBoxButtons.OK,
+                                        MessageBoxIcon.Exclamation);
+                        // 強制終了
+                        Application.Exit();
+                    }
+                    rowData.Question = question;
+                    rowData.Answer = answer;
+
+                    if (Int32.TryParse(shouldReview, out int shouldReviewInt))
+                    {
+                        rowData.ShouldReview = shouldReviewInt;
+                    }
+                    else
+                    {
+                        MessageBox.Show($"フラグ（印）は0か1のみ　行: {rowNumber}",
+                                        "姉御に連絡して！",
+                                        MessageBoxButtons.OK,
+                                        MessageBoxIcon.Exclamation);
+                        // 強制終了
+                        Application.Exit();
+                    }
 
                     // 突っ込んだRowDataをリストに突っ込む
                     rowDataList.Add(rowData);
+                }
+
+                // エラーリストにエラーがあったら、メッセージ出して強制終了
+                if(errorList.Any())
+                {
+                    MessageBox.Show("空セル - 行: " + String.Join(", ", errorList),
+                                    "姉御に連絡して！",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Exclamation);
+                    // 強制終了
+                    Application.Exit();
                 }
 
                 // 印の問題のみにフィルタリング
@@ -80,6 +133,9 @@ namespace VocabularyBook
                                 "姉御に連絡して！",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Exclamation);
+                // 強制終了
+                Application.Exit();
+
                 throw ex;
             }
         }
