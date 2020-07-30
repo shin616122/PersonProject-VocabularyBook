@@ -1,4 +1,6 @@
 ﻿using ClosedXML.Excel;
+using System;
+using System.Windows.Forms;
 
 namespace VocabularyBook
 {
@@ -11,20 +13,31 @@ namespace VocabularyBook
         /// <param name="checkBoxValue">チェックボックス数値</param>
         public static void UpdateShouldReview(int rowNumber, bool checkBoxValue, string filePath)
         {
-            // エクセルを読み込む
-            var workbook = new XLWorkbook(filePath);
-            
-            // 最初のワークシートを選択
-            var workSheet = workbook.Worksheet(1);
+            try
+            {
+                // エクセルを読み込む
+                var workbook = new XLWorkbook(filePath);
 
-            // 現在のrowを選択
-            var row = workSheet.Row(rowNumber);
+                // 最初のワークシートを選択
+                var workSheet = workbook.Worksheet(1);
 
-            // 印を更新する
-            row.Cell("D").Value = checkBoxValue ? "1" : "0";
+                // 現在のrowを選択
+                var row = workSheet.Row(rowNumber);
 
-            // エクセルを保存する
-            workbook.Save();
+                // 印を更新する
+                row.Cell("D").Value = checkBoxValue ? "1" : "0";
+
+                // エクセルを保存する
+                workbook.Save();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("エラー: " + ex.Message,
+                               "姉御に連絡して！",
+                               MessageBoxButtons.OK,
+                               MessageBoxIcon.Exclamation);
+                throw;
+            }
         }
     }
 }
