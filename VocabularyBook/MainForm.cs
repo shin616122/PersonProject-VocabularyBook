@@ -219,7 +219,7 @@ namespace VocabularyBook
                 Application.Exit();
             }
 
-            // chkShuffleがチェック入ったら、問題一覧をシャッフルする
+            // chkShuffleにチェック入ったら、問題一覧をシャッフルする
             if (IsShuffleChecked)
             {
                 RowDataList = RowDataList.OrderBy(row => Guid.NewGuid()).ToList();
