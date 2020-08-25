@@ -13,7 +13,7 @@ namespace VocabularyBook
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public static List<RowData> LoadDataFromExcel(string filePath, bool isReviewOnlyChcked)
+        public static List<RowData> LoadDataFromExcel(string filePath, bool isReviewOnlyChcked, bool IsQuestionHidden)
         {
             try
             {
@@ -86,8 +86,18 @@ namespace VocabularyBook
                         // 強制終了
                         Application.Exit();
                     }
-                    rowData.Question = question;
-                    rowData.Answer = answer;
+
+                    // TODO 綺麗に書く。　無理やりフラグによってデータを入れ替えて返してる
+                    if(IsQuestionHidden)
+                    {
+                        rowData.Question = answer;
+                        rowData.Answer = question;
+                    }
+                    else
+                    {
+                        rowData.Question = question;
+                        rowData.Answer = answer;
+                    }
 
                     if (Int32.TryParse(shouldReview, out int shouldReviewInt))
                     {

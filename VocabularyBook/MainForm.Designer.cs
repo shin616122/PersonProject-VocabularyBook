@@ -43,6 +43,7 @@
             this.chkReviewOnly = new System.Windows.Forms.CheckBox();
             this.btnStart = new System.Windows.Forms.Button();
             this.btnHome = new System.Windows.Forms.Button();
+            this.chkHideQuestion = new System.Windows.Forms.CheckBox();
             this.pnlQA.SuspendLayout();
             this.pnlStart.SuspendLayout();
             this.SuspendLayout();
@@ -176,6 +177,7 @@
             // 
             // pnlStart
             // 
+            this.pnlStart.Controls.Add(this.chkHideQuestion);
             this.pnlStart.Controls.Add(this.chkShuffle);
             this.pnlStart.Controls.Add(this.chkReviewOnly);
             this.pnlStart.Controls.Add(this.btnStart);
@@ -234,6 +236,19 @@
             this.btnHome.UseVisualStyleBackColor = true;
             this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
+            // chkHideQuestion
+            // 
+            this.chkHideQuestion.AutoSize = true;
+            this.chkHideQuestion.Font = new System.Drawing.Font("MS UI Gothic", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.chkHideQuestion.Location = new System.Drawing.Point(494, 218);
+            this.chkHideQuestion.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
+            this.chkHideQuestion.Name = "chkHideQuestion";
+            this.chkHideQuestion.Size = new System.Drawing.Size(123, 23);
+            this.chkHideQuestion.TabIndex = 3;
+            this.chkHideQuestion.Text = "問題非表示";
+            this.chkHideQuestion.UseVisualStyleBackColor = true;
+            this.chkHideQuestion.CheckedChanged += new System.EventHandler(this.chkHideQuestion_CheckedChanged);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -269,6 +284,7 @@
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.CheckBox chkShuffle;
         private System.Windows.Forms.Button btnHome;
+        private System.Windows.Forms.CheckBox chkHideQuestion;
     }
 }
 

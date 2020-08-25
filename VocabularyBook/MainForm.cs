@@ -13,6 +13,7 @@ namespace VocabularyBook
         public string FilePath { get; set; }
         public bool IsShuffleChecked { get; set; }
         public bool IsReviewOnlyChcked { get; set; }
+        public bool IsQuestionHidden { get; set; }
 
         public MainForm()
         {
@@ -194,7 +195,7 @@ namespace VocabularyBook
                 lbFilepath.Text = $"ファイルパス: {FilePath}";
 
                 // 問題一覧の取得
-                RowDataList = LoadData.LoadDataFromExcel(FilePath, IsReviewOnlyChcked);
+                RowDataList = LoadData.LoadDataFromExcel(FilePath, IsReviewOnlyChcked, IsQuestionHidden);
             }
             else if (filePaths.Length > 1)
             {
@@ -300,5 +301,10 @@ namespace VocabularyBook
 
         }
         #endregion
+
+        private void chkHideQuestion_CheckedChanged(object sender, EventArgs e)
+        {
+            IsQuestionHidden = chkHideQuestion.Checked;
+        }
     }
 }
