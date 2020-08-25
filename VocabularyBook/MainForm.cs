@@ -63,7 +63,7 @@ namespace VocabularyBook
             {
                 // TODO もっときれいな書き方があるはず
                 // もしCurrentRowNumberが最後なら、リセットする
-                if(CurrentRowNumber != RowDataList.Last().RowNumber)
+                if (CurrentRowNumber != RowDataList.Last().RowNumber)
                 {
                     // 次のRowNumberを取得
                     CurrentRowNumber = RowDataList.SkipWhile(row => row.RowNumber != CurrentRowNumber).Skip(1).First().RowNumber;
@@ -172,7 +172,7 @@ namespace VocabularyBook
             }
         }
 
-        
+
         /// <summary>
         /// 開始ボタン
         /// </summary>
@@ -220,7 +220,7 @@ namespace VocabularyBook
                 Application.Exit();
             }
 
-            // chkShuffleがチェック入ったら、問題一覧をシャッフルする
+            // chkShuffleにチェック入ったら、問題一覧をシャッフルする
             if (IsShuffleChecked)
             {
                 RowDataList = RowDataList.OrderBy(row => Guid.NewGuid()).ToList();
