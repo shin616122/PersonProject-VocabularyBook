@@ -14,6 +14,7 @@ namespace VocabularyBook
         public bool IsShuffleChecked { get; set; }
         public bool IsReviewOnlyChcked { get; set; }
         public bool IsQuestionHidden { get; set; }
+        public int QuestionNumber { get; set; } = 1;
 
         public MainForm()
         {
@@ -88,6 +89,11 @@ namespace VocabularyBook
 
                 // tbxAnswerを初期化
                 tbxAnswer.Text = String.Empty;
+
+                // 問題番号を更新
+                QuestionNumber++;
+                QuestionNumber = QuestionNumber > RowDataList.Count() ? 1 : QuestionNumber;
+                lbQuestionNumber.Text = $"問題:{QuestionNumber}/{RowDataList.Count()}";
             }
             catch (Exception ex)
             {
@@ -135,6 +141,11 @@ namespace VocabularyBook
 
                 // tbxAnswerを初期化
                 tbxAnswer.Text = String.Empty;
+
+                // 問題番号を更新
+                QuestionNumber--;
+                QuestionNumber = QuestionNumber <= 0 ? RowDataList.Count() : QuestionNumber;
+                lbQuestionNumber.Text = $"問題:{QuestionNumber}/{RowDataList.Count()}";
             }
             catch (Exception ex)
             {
@@ -196,6 +207,10 @@ namespace VocabularyBook
 
                 // 問題一覧の取得
                 RowDataList = LoadData.LoadDataFromExcel(FilePath, IsReviewOnlyChcked, IsQuestionHidden);
+
+                // 問題番号リセットする
+                QuestionNumber = 1;
+                lbQuestionNumber.Text = $"問題:{QuestionNumber}/{RowDataList.Count()}";
             }
             else if (filePaths.Length > 1)
             {
