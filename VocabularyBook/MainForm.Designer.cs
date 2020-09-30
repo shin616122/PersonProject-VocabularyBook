@@ -39,11 +39,12 @@
             this.lbFilepath = new System.Windows.Forms.Label();
             this.pnlQA = new System.Windows.Forms.Panel();
             this.pnlStart = new System.Windows.Forms.Panel();
+            this.chkHideQuestion = new System.Windows.Forms.CheckBox();
             this.chkShuffle = new System.Windows.Forms.CheckBox();
             this.chkReviewOnly = new System.Windows.Forms.CheckBox();
             this.btnStart = new System.Windows.Forms.Button();
             this.btnHome = new System.Windows.Forms.Button();
-            this.chkHideQuestion = new System.Windows.Forms.CheckBox();
+            this.lbQuestionNumber = new System.Windows.Forms.Label();
             this.pnlQA.SuspendLayout();
             this.pnlStart.SuspendLayout();
             this.SuspendLayout();
@@ -169,6 +170,7 @@
             this.pnlQA.Controls.Add(this.label1);
             this.pnlQA.Controls.Add(this.tbxQuestion);
             this.pnlQA.Controls.Add(this.btnHome);
+            this.pnlQA.Controls.Add(this.lbQuestionNumber);
             this.pnlQA.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlQA.Location = new System.Drawing.Point(0, 0);
             this.pnlQA.Name = "pnlQA";
@@ -185,6 +187,19 @@
             this.pnlStart.Name = "pnlStart";
             this.pnlStart.Size = new System.Drawing.Size(638, 311);
             this.pnlStart.TabIndex = 9;
+            // 
+            // chkHideQuestion
+            // 
+            this.chkHideQuestion.AutoSize = true;
+            this.chkHideQuestion.Font = new System.Drawing.Font("MS UI Gothic", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.chkHideQuestion.Location = new System.Drawing.Point(494, 218);
+            this.chkHideQuestion.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
+            this.chkHideQuestion.Name = "chkHideQuestion";
+            this.chkHideQuestion.Size = new System.Drawing.Size(123, 23);
+            this.chkHideQuestion.TabIndex = 3;
+            this.chkHideQuestion.Text = "問題非表示";
+            this.chkHideQuestion.UseVisualStyleBackColor = true;
+            this.chkHideQuestion.CheckedChanged += new System.EventHandler(this.chkHideQuestion_CheckedChanged);
             // 
             // chkShuffle
             // 
@@ -236,18 +251,15 @@
             this.btnHome.UseVisualStyleBackColor = true;
             this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
-            // chkHideQuestion
+            // lbQuestionNumber
             // 
-            this.chkHideQuestion.AutoSize = true;
-            this.chkHideQuestion.Font = new System.Drawing.Font("MS UI Gothic", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.chkHideQuestion.Location = new System.Drawing.Point(494, 218);
-            this.chkHideQuestion.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
-            this.chkHideQuestion.Name = "chkHideQuestion";
-            this.chkHideQuestion.Size = new System.Drawing.Size(123, 23);
-            this.chkHideQuestion.TabIndex = 3;
-            this.chkHideQuestion.Text = "問題非表示";
-            this.chkHideQuestion.UseVisualStyleBackColor = true;
-            this.chkHideQuestion.CheckedChanged += new System.EventHandler(this.chkHideQuestion_CheckedChanged);
+            this.lbQuestionNumber.AutoSize = true;
+            this.lbQuestionNumber.Font = new System.Drawing.Font("MS UI Gothic", 13.875F);
+            this.lbQuestionNumber.Location = new System.Drawing.Point(526, 41);
+            this.lbQuestionNumber.Name = "lbQuestionNumber";
+            this.lbQuestionNumber.Size = new System.Drawing.Size(81, 19);
+            this.lbQuestionNumber.TabIndex = 11;
+            this.lbQuestionNumber.Text = "問題:0/0";
             // 
             // MainForm
             // 
@@ -285,6 +297,7 @@
         private System.Windows.Forms.CheckBox chkShuffle;
         private System.Windows.Forms.Button btnHome;
         private System.Windows.Forms.CheckBox chkHideQuestion;
+        private System.Windows.Forms.Label lbQuestionNumber;
     }
 }
 
