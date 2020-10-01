@@ -30,8 +30,6 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.tbxQuestion = new System.Windows.Forms.TextBox();
-            this.tbxAnswer = new System.Windows.Forms.TextBox();
             this.btnAnswer = new System.Windows.Forms.Button();
             this.btnNext = new System.Windows.Forms.Button();
             this.chkShouldReview = new System.Windows.Forms.CheckBox();
@@ -45,6 +43,8 @@
             this.btnStart = new System.Windows.Forms.Button();
             this.btnHome = new System.Windows.Forms.Button();
             this.lbQuestionNumber = new System.Windows.Forms.Label();
+            this.richTbxQuestion = new System.Windows.Forms.RichTextBox();
+            this.richTbxAnswer = new System.Windows.Forms.RichTextBox();
             this.pnlQA.SuspendLayout();
             this.pnlStart.SuspendLayout();
             this.SuspendLayout();
@@ -70,32 +70,6 @@
             this.label2.Size = new System.Drawing.Size(33, 27);
             this.label2.TabIndex = 1;
             this.label2.Text = "Ｂ";
-            // 
-            // tbxQuestion
-            // 
-            this.tbxQuestion.Enabled = false;
-            this.tbxQuestion.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.tbxQuestion.Location = new System.Drawing.Point(17, 66);
-            this.tbxQuestion.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
-            this.tbxQuestion.Multiline = true;
-            this.tbxQuestion.Name = "tbxQuestion";
-            this.tbxQuestion.Size = new System.Drawing.Size(251, 196);
-            this.tbxQuestion.TabIndex = 2;
-            this.tbxQuestion.Text = "インドメタシン";
-            this.tbxQuestion.TextChanged += new System.EventHandler(this.tbxQuestion_TextChanged);
-            // 
-            // tbxAnswer
-            // 
-            this.tbxAnswer.Enabled = false;
-            this.tbxAnswer.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.tbxAnswer.Location = new System.Drawing.Point(366, 66);
-            this.tbxAnswer.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
-            this.tbxAnswer.Multiline = true;
-            this.tbxAnswer.Name = "tbxAnswer";
-            this.tbxAnswer.Size = new System.Drawing.Size(251, 196);
-            this.tbxAnswer.TabIndex = 3;
-            this.tbxAnswer.Text = "強力なCOX阻害薬だが、イヌネコに対して・・・";
-            this.tbxAnswer.TextChanged += new System.EventHandler(this.tbxAnswer_TextChanged);
             // 
             // btnAnswer
             // 
@@ -165,12 +139,12 @@
             this.pnlQA.Controls.Add(this.label2);
             this.pnlQA.Controls.Add(this.btnBack);
             this.pnlQA.Controls.Add(this.btnNext);
-            this.pnlQA.Controls.Add(this.tbxAnswer);
             this.pnlQA.Controls.Add(this.lbFilepath);
             this.pnlQA.Controls.Add(this.label1);
-            this.pnlQA.Controls.Add(this.tbxQuestion);
             this.pnlQA.Controls.Add(this.btnHome);
             this.pnlQA.Controls.Add(this.lbQuestionNumber);
+            this.pnlQA.Controls.Add(this.richTbxQuestion);
+            this.pnlQA.Controls.Add(this.richTbxAnswer);
             this.pnlQA.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlQA.Location = new System.Drawing.Point(0, 0);
             this.pnlQA.Name = "pnlQA";
@@ -261,6 +235,29 @@
             this.lbQuestionNumber.TabIndex = 11;
             this.lbQuestionNumber.Text = "問題:0/0";
             // 
+            // richTbxQuestion
+            // 
+            this.richTbxQuestion.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.richTbxQuestion.Location = new System.Drawing.Point(17, 66);
+            this.richTbxQuestion.Name = "richTbxQuestion";
+            this.richTbxQuestion.ReadOnly = true;
+            this.richTbxQuestion.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
+            this.richTbxQuestion.Size = new System.Drawing.Size(250, 196);
+            this.richTbxQuestion.TabIndex = 12;
+            this.richTbxQuestion.Text = "インドメタシン";
+            this.richTbxQuestion.TextChanged += new System.EventHandler(this.richTbxQuestion_TextChanged);
+            // 
+            // richTbxAnswer
+            // 
+            this.richTbxAnswer.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.richTbxAnswer.Location = new System.Drawing.Point(366, 66);
+            this.richTbxAnswer.Name = "richTbxAnswer";
+            this.richTbxAnswer.ReadOnly = true;
+            this.richTbxAnswer.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
+            this.richTbxAnswer.Size = new System.Drawing.Size(250, 196);
+            this.richTbxAnswer.TabIndex = 13;
+            this.richTbxAnswer.Text = "強力なCOX阻害薬だが、イヌネコに対して・・・";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -283,8 +280,6 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox tbxQuestion;
-        private System.Windows.Forms.TextBox tbxAnswer;
         private System.Windows.Forms.Button btnAnswer;
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.CheckBox chkShouldReview;
@@ -298,6 +293,8 @@
         private System.Windows.Forms.Button btnHome;
         private System.Windows.Forms.CheckBox chkHideQuestion;
         private System.Windows.Forms.Label lbQuestionNumber;
+        private System.Windows.Forms.RichTextBox richTbxQuestion;
+        private System.Windows.Forms.RichTextBox richTbxAnswer;
     }
 }
 
