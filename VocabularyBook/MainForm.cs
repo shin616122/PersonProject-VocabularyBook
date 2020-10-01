@@ -40,8 +40,8 @@ namespace VocabularyBook
         {
             try
             {
-                // 答えをtbxAnswerにロードする
-                tbxAnswer.Text = RowDataList.Where(row => row.RowNumber == CurrentRowNumber).Select(row => row.Answer).FirstOrDefault();
+                // 答えをrichTbxAnswerにロードする
+                richTbxAnswer.Text = RowDataList.Where(row => row.RowNumber == CurrentRowNumber).Select(row => row.Answer).FirstOrDefault();
             }
             catch (Exception ex)
             {
@@ -70,7 +70,7 @@ namespace VocabularyBook
                     CurrentRowNumber = RowDataList.SkipWhile(row => row.RowNumber != CurrentRowNumber).Skip(1).First().RowNumber;
 
                     // 次の問題をロードする
-                    tbxQuestion.Text = RowDataList.Where(row => row.RowNumber == CurrentRowNumber).Select(row => row.Question).FirstOrDefault();
+                    richTbxQuestion.Text = RowDataList.Where(row => row.RowNumber == CurrentRowNumber).Select(row => row.Question).FirstOrDefault();
 
                     // チェックボックスを更新する
                     chkShouldReview.Checked = Convert.ToBoolean(RowDataList.Where(row => row.RowNumber == CurrentRowNumber).Select(row => row.ShouldReview).FirstOrDefault());
@@ -81,14 +81,14 @@ namespace VocabularyBook
                     CurrentRowNumber = RowDataList.First().RowNumber;
 
                     // 最初の問題をロードする
-                    tbxQuestion.Text = RowDataList.First().Question; ;
+                    richTbxQuestion.Text = RowDataList.First().Question; ;
 
                     // 最初の印をロードする
                     chkShouldReview.Checked = Convert.ToBoolean(RowDataList.First().ShouldReview);
                 }
 
-                // tbxAnswerを初期化
-                tbxAnswer.Text = String.Empty;
+                // richTbxAnswerを初期化
+                richTbxAnswer.Text = String.Empty;
 
                 // 問題番号を更新
                 QuestionNumber++;
@@ -122,7 +122,7 @@ namespace VocabularyBook
                     CurrentRowNumber = RowDataList.TakeWhile(row => row.RowNumber != CurrentRowNumber).Last().RowNumber;
 
                     // 前の問題をロードする
-                    tbxQuestion.Text = RowDataList.Where(row => row.RowNumber == CurrentRowNumber).Select(row => row.Question).FirstOrDefault();
+                    richTbxQuestion.Text = RowDataList.Where(row => row.RowNumber == CurrentRowNumber).Select(row => row.Question).FirstOrDefault();
 
                     // チェックボックスを更新する
                     chkShouldReview.Checked = Convert.ToBoolean(RowDataList.Where(row => row.RowNumber == CurrentRowNumber).Select(row => row.ShouldReview).FirstOrDefault());
@@ -133,14 +133,14 @@ namespace VocabularyBook
                     CurrentRowNumber = RowDataList.Last().RowNumber;
 
                     // 最後の問題をロードする
-                    tbxQuestion.Text = RowDataList.Last().Question;
+                    richTbxQuestion.Text = RowDataList.Last().Question;
 
                     // 最後の印をロードする
                     chkShouldReview.Checked = Convert.ToBoolean(RowDataList.Last().ShouldReview);
                 }
 
-                // tbxAnswerを初期化
-                tbxAnswer.Text = String.Empty;
+                // richTbxAnswerを初期化
+                richTbxAnswer.Text = String.Empty;
 
                 // 問題番号を更新
                 QuestionNumber--;
@@ -248,14 +248,14 @@ namespace VocabularyBook
             // ロードした問題のID
             CurrentRowNumber = RowDataList.First().RowNumber;
 
-            // 一番目の問題をtbxQuestionにロードする
-            tbxQuestion.Text = RowDataList.First().Question;
+            // 一番目の問題をrichTbxQuestionにロードする
+            richTbxQuestion.Text = RowDataList.First().Question;
 
             // 一番目の印をchkShouldReviewにロードする
             chkShouldReview.Checked = Convert.ToBoolean(RowDataList.First().ShouldReview);
 
-            // tbxAnswerを初期化
-            tbxAnswer.Text = String.Empty;
+            // richTbxAnswerを初期化
+            richTbxAnswer.Text = String.Empty;
         }
 
         /// <summary>
@@ -290,7 +290,7 @@ namespace VocabularyBook
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void tbxQuestion_TextChanged(object sender, EventArgs e)
+        private void richTbxQuestion_TextChanged(object sender, EventArgs e)
         {
             // いらないやつ後で消す
         }
@@ -300,7 +300,7 @@ namespace VocabularyBook
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void tbxAnswer_TextChanged(object sender, EventArgs e)
+        private void richTbxAnswer_TextChanged(object sender, EventArgs e)
         {
 
         }
