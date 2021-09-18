@@ -46,7 +46,7 @@ namespace VocabularyBook
             catch (Exception ex)
             {
                 MessageBox.Show("エラー: " + ex.Message,
-                                "姉御に連絡して！",
+                                "アドミンに連絡してください！！",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Exclamation);
                 throw ex;
@@ -98,7 +98,7 @@ namespace VocabularyBook
             catch (Exception ex)
             {
                 MessageBox.Show("エラー: " + ex.Message,
-                                "姉御に連絡して！",
+                                "アドミンに連絡してください！！",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Exclamation);
                 throw ex;
@@ -150,7 +150,7 @@ namespace VocabularyBook
             catch (Exception ex)
             {
                 MessageBox.Show("エラー: " + ex.Message,
-                                "姉御に連絡して！",
+                                "アドミンに連絡してください！！",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Exclamation);
                 throw ex;
@@ -176,7 +176,7 @@ namespace VocabularyBook
             catch (Exception ex)
             {
                 MessageBox.Show("エラー: " + ex.Message,
-                               "姉御に連絡して！",
+                               "アドミンに連絡してください！！",
                                MessageBoxButtons.OK,
                                MessageBoxIcon.Exclamation);
                 throw ex;
@@ -216,7 +216,7 @@ namespace VocabularyBook
             {
                 //　複数エクセを見つかった場合
                 MessageBox.Show("エラー: 複数エクセルが見つかりました。",
-                                "姉御に連絡して！",
+                                "アドミンに連絡してください！！",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Exclamation);
 
@@ -227,7 +227,7 @@ namespace VocabularyBook
             {
                 //　エクセを見つからなかった場合
                 MessageBox.Show("エラー: エクセルがありません。",
-                                "姉御に連絡して！",
+                                "アドミンに連絡してください！！",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Exclamation);
 

@@ -27,7 +27,7 @@ namespace VocabularyBook
                 {
                     //　Nullチェック
                     MessageBox.Show("エラー: エクセルファイルにデータがありません。",
-                                    "姉御に連絡して！ ",
+                                    "アドミンに連絡してください！",
                                     MessageBoxButtons.OK,
                                     MessageBoxIcon.Exclamation);
 
@@ -37,7 +37,7 @@ namespace VocabularyBook
                 //{
 
                 //// フォマードチェック
-                //MessageBox.Show("姉御に連絡して！ エクセルのフォマードが対応していません。",
+                //MessageBox.Show("アドミンに連絡してください！ エクセルのフォマードが対応していません。",
                 //                "残念でした",
                 //                MessageBoxButtons.OK,
                 //                MessageBoxIcon.Exclamation);
@@ -80,7 +80,7 @@ namespace VocabularyBook
                     else
                     {
                         MessageBox.Show($"通番は数字のみ　行: {rowNumber}",
-                                        "姉御に連絡して！",
+                                        "アドミンに連絡してください！",
                                         MessageBoxButtons.OK,
                                         MessageBoxIcon.Exclamation);
                         // 強制終了
@@ -106,7 +106,7 @@ namespace VocabularyBook
                     else
                     {
                         MessageBox.Show($"フラグ（印）は0か1のみ　行: {rowNumber}",
-                                        "姉御に連絡して！",
+                                        "アドミンに連絡してください！",
                                         MessageBoxButtons.OK,
                                         MessageBoxIcon.Exclamation);
                         // 強制終了
@@ -121,7 +121,7 @@ namespace VocabularyBook
                 if(errorList.Any())
                 {
                     MessageBox.Show("空セル - 行: " + String.Join(", ", errorList),
-                                    "姉御に連絡して！",
+                                    "アドミンに連絡してください！",
                                     MessageBoxButtons.OK,
                                     MessageBoxIcon.Exclamation);
                     // 強制終了
@@ -140,7 +140,7 @@ namespace VocabularyBook
             catch (Exception ex)
             {
                 MessageBox.Show("エラー: " + ex.Message,
-                                "姉御に連絡して！",
+                                "アドミンに連絡してください！",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Exclamation);
                 // 強制終了
